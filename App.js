@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Text, Dimensions } from "react-native";
+import Signup from "./screens/Signup";
+import { useFonts } from "expo-font";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [fontsLoaded] = useFonts({
+    // montserrat: require("./assets/fonts/Montserrat-Regular.ttf"),
+    // "montserrat-bold": require("./assets/fonts/Montserrat-Bold.ttf"),
+    // "montserrat-meduim": require("./assets/fonts/Montserrat-Medium.ttf"),
+    regular: require("./assets/fonts/Poppins-Regular.ttf"),
+    medium: require("./assets/fonts/Poppins-Medium.ttf"),
+    bold: require("./assets/fonts/Poppins-Bold.ttf"),
+    light: require("./assets/fonts/Poppins-Light.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  return <Signup />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create({});
